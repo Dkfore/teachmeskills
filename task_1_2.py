@@ -3,5 +3,5 @@
 x = 145
 y = 94
 
-answer = (x - y ) / (1 + x * y)
+answer = (abs(x) - abs(y) ) / (1 + abs(x * y)) 
 print(answer)
