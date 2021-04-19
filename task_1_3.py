@@ -2,4 +2,5 @@
 
 x = 8
 print("volume = ", x**3)
-print("surface area  = ", x**2 * 6)
+print("surface area  = ", x**2) 
+
