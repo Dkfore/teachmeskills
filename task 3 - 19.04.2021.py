@@ -106,7 +106,7 @@ print(eco_berries)
 # А если их 2, то 25,5%, и сумму округлить до 2 символов после запятой.
 # Рассчитать и вывести на экран стоимость каждого отдельного продукта.
 
-
+''' слишком длинный и не тот метод
 for i in new_vegetables:         # new_vegetables - это обновленный лист с заглавной буквы (в процессе перешел из tuple)
     if "r" in i:
         print(f"Price {i} is {vegetables[-1]*0.8}")
@@ -131,21 +131,47 @@ for i in new_fruit:            # new_fruit - это обновленный ли�
     elif "rr" in i:                                     # если бы не две вместе, то код другой, то же самое, если r = 3
         print(f"Price {i} is {round(fruit[-1]*0.745, 2)}")
     else:
-        print(f"Price {i} is {fruit[-1]}")
+        print(f"Price {i} is {fruit[-1]}")'''
 
 """ пятое задание нужно через словарь, но уже нет времени ... """
+
+# через словарь
+
+vegetables_price = dict.fromkeys(new_vegetables, vegetables[-1])
+berries_price = dict.fromkeys(new_berries, berries[-1])
+fruit_price = dict.fromkeys(new_fruit, fruit[-1])
+
+final_product = vegetables_price
+final_product.update(berries_price)
+final_product.update(fruit_price)
+print(final_product)            # вот этот дикт (можно было не делать отдельные словари, а обновить один)
+
+for product, prices in final_product.items():
+
+    if "r" in product:
+        final_price = round(prices * 0.8, 2)
+        print(f"Price {product} - {final_price}")
+    elif "rr" in product:
+        final_price = round(prices * 0.8, 2)            # если бы не две вместе, то код другой, и другой, если r = 3
+        print(f"Price {product} - {final_price}")
+    else:
+        final_price = prices
+        print(f"Price {product} - {final_price}")
+
 
 # 6. Когда кто-то покупает товар, на экране должен отобразиться чек с товаром, кол-вом и суммой.
 # Сейчас бы воспользоваться словарем, которого нет (см задание 5)
 
 product_list = []  # В эту переменную нужно добавить все актуальные товары
-product_list = new_vegetables + new_berries + new_fruit     # просто объединил оставшиеся товары (или нужно было с 6зн?)
+product_list.extend(new_vegetables)
+product_list.extend(new_berries)
+product_list.extend(new_fruit)
 print("Product list: ", product_list)
 
 order = {choice(product_list): randrange(10)}     # Заказ на товар и кол-во
 
-for key in order.keys():
-    quantity = order[key]
+for key in order.keys():            # долгий метод без словаря
+    quantity = order[key]           # лишняя строка
 
     if key in new_vegetables:        # если это овощ
         if "r" in key:
@@ -171,5 +197,8 @@ for key in order.keys():
         else:
             price = berries[-1] * quantity
 
+    print(f"Товар {key}, количество {order[key]}, стоимость {round(price, 2)}")
 
-print(f"Товар {key}, количество {order[key]}, стоимость {round(price, 2)}")
+for goods in order.keys():
+
+    print(f"Товар {goods}, количество {order[goods]}, стоимость {round(final_price * order[goods], 2)}")
