@@ -11,11 +11,9 @@ berries = ('blueberry', 'cranberry', 'watermelon', 8)
 # Все типы товаров должны быть неизменяемыми, чтобы кто-то случайно не перепутал их снова.
 # В овощи забыли добавить капусту. Цифра в категории - это цена товара этого типа.
 
-
 new_fruit = []
 for i in fruit[0:-1]:
     new_fruit.append(i.title())
-
 
 new_vegetables = []
 for i in vegetables[0:-1]:
@@ -33,7 +31,6 @@ new_fruit = tuple(new_fruit)
 # add cabbage to vegetables
 new_vegetables = list(new_vegetables)
 new_vegetables.append("Cabbage")
-
 new_vegetables = tuple(new_vegetables)      # вернули к неизменяемым
 
 print(new_fruit, new_berries, new_vegetables)
@@ -61,10 +58,8 @@ new_berries.remove("Watermelon")
 new_berries = tuple(new_berries)
 print("Ягоды: ", new_berries)
 
-
 new_store = {"Berries": new_berries, "Vegetables": new_vegetables, "Fruit": new_fruit}   # обновим склад
 print("Обновленный склад: ", store)
-
 
 # 4. Если название продукта длиннее 6 символов, нужно отображать только первые 6.
 
@@ -76,9 +71,7 @@ for x in new_vegetables:
     eco_vegetables.append(x)
 print(eco_vegetables)
 
-
 # та же процедура с фруктами
-
 new_fruit = list(new_fruit)
 
 eco_fruit = []
@@ -87,9 +80,7 @@ for x in new_fruit:
     eco_fruit.append(x)
 print(eco_fruit)
 
-
 # та же процедура с ягодками
-
 new_berries = list(new_berries)
 
 eco_berries = []
@@ -97,7 +88,6 @@ for x in new_berries:
     x = x[0:6]
     eco_berries.append(x)
 print(eco_berries)
-
 
 '''
 Дополнительные задачи:
@@ -144,7 +134,7 @@ fruit_price = dict.fromkeys(new_fruit, fruit[-1])
 final_product = vegetables_price
 final_product.update(berries_price)
 final_product.update(fruit_price)
-print(final_product)            # вот этот дикт (можно было не делать отдельные словари, а обновить один)
+print("Это продукты", final_product)            # вот этот дикт (можно было не делать отдельные словари, а обновить один)
 
 for product, prices in final_product.items():
 
@@ -200,5 +190,14 @@ for key in order.keys():            # долгий метод без слова�
     print(f"Товар {key}, количество {order[key]}, стоимость {round(price, 2)}")
 
 for goods in order.keys():
+    print(goods)
 
-    print(f"Товар {goods}, количество {order[goods]}, стоимость {round(final_price * order[goods], 2)}")
+    print(order.get(goods))
+    if "r" in goods:
+        final_price = round(prices * 0.8, 2)
+    elif "rr" in goods:
+        final_price = round(prices * 0.745, 2)
+    else:
+        final_price = prices
+
+print(f"Товар {goods}, количество {order[goods]}, стоимость {final_price * order[goods]}")
