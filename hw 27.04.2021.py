@@ -122,15 +122,15 @@ breaks()
 # Надо написать декоратор, который будет проверять кол-во чашек кофе на каждый день. И если их было меньше 20,
 # возвращать сообщение с ошибкой (подсказка: try/except).
 
+
 def check_cups(cups_day):
     def wrapper():          # это обертка
         print("What is day?")
         cups_day(cups)
         try:
-            if cups <= 20:
-                print("Mistake? And it's way to close our cafe")
+            cups >= 20
         except:
-            pass
+            print("Mistake? And it's way to close our cafe")
         print("Perfect day")
     return wrapper()
 
