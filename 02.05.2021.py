@@ -92,24 +92,24 @@ print(room_1.__dict__)
 # 3. Нужно создать один метод для изменения любого номера по заданным параметрам,
 # в том числе удалению и изменению номеров и комнат.
 
-# her = Lux()
-# print(her.room)
-# print(her.quantity)
-#
-#
-# def g_edit():
-#     choise = input("Какой номер вы хотите изменить? Royal, Lux или Standard ")
-#     if choise == 'Royal':
-#         her.edit()
-#     elif choise == 'Lux':
-#         her.edit()
-#     elif choise == "Standard":
-#         her.edit()
-#     else:
-#         print("Неправильно введен номер")
-#
-#
-# g_edit()
-#
-# print(her.room)
-# print(her.quantity)
+her = Lux()
+print(her.room)
+print(her.quantity)
+
+
+def g_edit():
+    choise = input("Какой номер вы хотите изменить? Royal, Lux или Standard ")
+    if choise == 'Royal':
+        her.edit()
+    elif choise == 'Lux':
+        her.edit()
+    elif choise == "Standard":
+        her.edit()
+    else:
+        print("Неправильно введен номер")
+
+
+g_edit()
+
+print(her.room)
+print(her.quantity)
